@@ -1,0 +1,150 @@
+<!--Hidden only on xs-->
+<div class="container">
+
+    <div *ngIf="!promotionService.usersValidPromotions || promotionService.usersValidPromotions.length < 1">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <h1 class="text-uppercase spacing-square-big-top spacing-square-20">Select your rebate</h1>
+
+                <h2 class="text-uppercase">Step 2 of 3</h2>
+
+                <p class="spacing-square-big">It looks like there are no rebates available for the information you've
+                    entered, if you'd like to go back and review your purchase information please click the back button
+                    below.</p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="promotionService.usersValidPromotions && promotionService.usersValidPromotions.length > 0">
+
+        <div class="row">
+            <div *ngIf="submissionService.userType === 'online'">
+                <h1 class="text-uppercase spacing-square-big-top spacing-square-20">Select your rebate</h1>
+
+                <h2 class="text-uppercase">Step 2 of 3 </h2>
+
+                <p class="spacing-square-big">Here is a list of current rebates. Select the one you are claiming.</p>
+
+            </div>
+
+            <div *ngIf="submissionService.userType === 'mail-in'">
+                <h1 class="text-uppercase spacing-square-big-top spacing-square-20">Mail-In Rebate</h1>
+
+                <p class="spacing-square-big">Select your rebate, download the form, and follow the instructions:</p>
+            </div>
+
+            <div *ngIf="submissionService.userType === 'fleet'">
+                <h1 class="text-uppercase spacing-square-big-top spacing-square-20">Select your Rebate</h1>
+
+                <p class="spacing-square-big">Select your rebate(s), download and fill out form(s), then click next to
+                    upload</p>
+            </div>
+        </div>
+
+        <div *ngFor="let promo of promotionService.usersValidPromotions; let i = index">
+            <!--<div class="col">-->
+
+                <!--Visible only on XS-->
+                <div class="d-block d-sm-none">
+                    <div class="spacing-square-20"></div>
+                    <div class="bordertest2">
+
+                        <div class="col second-div-for-image">
+                            <img src={{promo.image}} alt="Image for {{promo.offerCode}}" class="image-tiles">
+                        </div>
+                        <div class="bordertest text-center">
+                            <div class="spacing-square-20  tiles">
+                                {{promo.displayName}}
+                            </div>
+                            <h2>{{promo.value}}</h2>
+                            <div class="spacing-square-20">Offer Code: {{promo.offerCode}}</div>
+
+                            <div> Program Dates:</div>
+
+                            <div class="spacing-square-20">
+                                {{ promo.startDate | date:'shortDate' }} - {{ promo.endDate | date:'shortDate' }}
+                            </div>
+                            <!--<a class="btn btn-primary text-uppercase tiles-btn " routerLink="/">Download Form</a>-->
+
+                            <a *ngIf="submissionService.userType === 'mail-in' || submissionService.userType === 'fleet'" class="btn btn-primary text-uppercase"
+                               target="_blank"
+                               href={{promo.pdfLink}}>Download Form</a>
+                            <button *ngIf="submissionService.userType === 'online'"
+                                    class="btn btn-primary text-uppercase"
+                                    (click)="setPromo(promo, ['/submission-consumer'])">Submit Online
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-none d-sm-block">
+
+                    <div class="row bordertest2">
+
+
+                        <div class="col bordertest tiles">
+                            {{promo.displayName}}
+                        </div>
+                        <div class="col bordertest second-div-for-image">
+                            <img src={{promo.image}} alt="Image for {{promo.offerCode}}" class=" image-tiles">
+                        </div>
+                        <div class="col bordertest text-center">
+                            <!--<p>-->
+                            <h2>{{promo.value}}</h2>
+                            Offer Code: {{promo.offerCode}}
+                            <br>
+                            Program Dates:
+                            <br>
+                            {{ promo.startDate | date:'shortDate' }} - {{ promo.endDate | date:'shortDate' }}
+                            <!--</p>-->
+                            <br>
+                        </div>
+                        <div class="col bordertest text-right button-vertical-middle">
+                            <br>
+                            <br>
+                            <a *ngIf="submissionService.userType === 'mail-in' || submissionService.userType === 'fleet'" class="btn btn-primary text-uppercase"
+                               target="_blank"
+                               href={{promo.pdfLink}}>Download Form</a>
+                            <button *ngIf="submissionService.userType === 'online'"
+                                    class="btn btn-primary text-uppercase" onclick="window.scrollTo(0, 0);"
+                                    (click)="setPromo(promo, ['/submission-consumer'])">Submit Online
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="spacing-square-big"></div>
+
+                </div>
+            <!--</div>-->
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6 pr-5">
+            <button class="btn btn-primary text-uppercase gm-btn spacing-square-big-top spacing-square-big"
+                    *ngIf="submissionService.userType === 'mail-in'"
+                    onclick="window.scrollTo(0, 0);"
+                    routerLink="/home">Back
+            </button>
+            <button class="btn btn-primary text-uppercase gm-btn spacing-square-big-top spacing-square-big"
+                    *ngIf="submissionService.userType === 'fleet' || submissionService.userType === 'online'"
+                    onclick="window.scrollTo(0, 0);"
+                    routerLink="/purchase-info">Back
+            </button>
+        </div>
+        <div class="col-xs-6">
+            <button *ngIf="submissionService.userType === 'fleet' && promotionService.usersValidPromotions && promotionService.usersValidPromotions.length > 0"
+                    class="btn btn-primary text-uppercase gm-btn spacing-square-big-top"
+                    onclick="window.scrollTo(0, 0);"
+                    routerLink="/fleet">Next
+            </button>
+        </div>
+
+    </div>
+
+</div>

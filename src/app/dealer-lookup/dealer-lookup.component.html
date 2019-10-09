@@ -1,0 +1,76 @@
+<div class="modal-header">
+
+    <div *ngIf="!loading" class="grid">
+        <div class="row m-0">
+            <h4 class="modal-title pull-left">Dealer Lookup</h4>
+        </div>
+
+        <div class="row m-0">
+            <p>Please select your dealer from the list below. If you cannot locate your dealer, <a (click)="escapeDealer()" href="javascript:void(0);">click here</a>.</p>
+        </div>
+    </div>
+
+    <h4 *ngIf="loading" class="modal-title pull-left">Loading..</h4>
+    <!--<button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">-->
+    <!--<span aria-hidden="true">&times;</span>-->
+    <!--</button>-->
+</div>
+<div class="modal-body">
+
+    <div id="loading-content" *ngIf="loading">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-8 mx-auto">
+                    <img src="/assets/images/spinner.gif" class="img-fluid text-center">
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div id="modal-content" *ngIf="!loading">
+
+        <div class="container" *ngIf="!error">
+
+            <div class="card mb-3" *ngFor="let dealer of dealerList">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ dealer.name }}</h5>
+                    <div class="card-text">
+
+                        <p>{{ dealer.address }}</p>
+
+                        <p *ngIf="dealer.address2">{{ dealer.address2 }}</p>
+
+                        <p>{{ dealer.city }}, {{ dealer.state }} {{dealer.zip}}</p>
+
+                    </div>
+
+                    <button type="button" class="btn btn-primary mt-3" (click)="chooseDealer(dealer)">Use This Dealer</button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container" *ngIf="error">
+
+            <p>No dealers found for zip code: {{ dealerZip }}</p>
+
+        </div>
+    </div>
+
+
+
+
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Close</button>
+</div>

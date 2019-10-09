@@ -1,0 +1,579 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+@font-face{
+  font-family:"Trade Gothic";
+  src:url("./fonts/f0708d82-47f5-4497-afac-8c5a771250e8.eot?#iefix");
+  src:url("./fonts/f0708d82-47f5-4497-afac-8c5a771250e8.eot?#iefix") format("eot"),url("./fonts/520ed712-50ad-4591-aa63-b242b83a3694.woff2") format("woff2"),url("./fonts/c9083b7e-ba26-4e45-8f1b-34ad32e924e5.woff") format("woff"),url("./fonts/84c568ba-a16d-43bb-ad9f-783ab985108f.ttf") format("truetype");
+}
+
+//aka: Headline
+h1 {
+  font: 100% "Trade Gothic";
+  font-size: 40pt;
+  //height: 40pt;
+  color: theme-color("primary");
+  //For smaller devices
+  @media (max-width: 576px) {
+    padding-right: 10px;
+    padding-left: 10px;
+
+  }
+}
+
+//aka: SubheadLine
+h2, .subheadline {
+  font: 100% "Trade Gothic";
+  font-size: 30pt;
+  color: theme-color("secondary");
+  //For smaller devices
+  @media (max-width: 576px) {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+//aka: paragraph title
+h3 {
+
+  font: 100% "Arial";
+  font-weight: bold;
+  font-size: 14pt;
+  color: theme-color("secondary");
+
+  //For smaller devices
+  @media (max-width: 576px) {
+    font-size: 16pt;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+//aka: paragraph title
+.nav-link {
+
+  font: 100% "Arial";
+  font-weight: bold;
+  font-size: 14pt;
+  color: theme-color("secondary") !important;
+
+  //For smaller devices
+  @media (max-width: 576px) {
+    font-size: 16pt;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+.tiles {
+
+  font: 100% "Arial";
+  font-weight: bold;
+  font-size: 20pt;
+  color: theme-color("secondary");
+
+  //For smaller devices
+  @media (max-width: 576px) {
+    font-size: 10pt;
+    font: 100% "Arial";
+    font-weight: bold;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+
+//aka: body copy
+p, .body-copy {
+  margin: 0px;
+  font: 100% "Arial";
+  //font-weight: bold;
+  font-size: 12pt;
+  color: theme-color("secondary");
+
+  //For smaller devices
+  @media (max-width: 576px) {
+    font-size: 14pt;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+}
+
+//aka: legal copy
+.legal-copy {
+
+  font: 100% "Arial";
+  font-size: 11pt;
+  color: theme-color("secondary") !important;
+  //For smaller devices
+  @media (max-width: 576px) {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+}
+
+//aka: alert
+.alert-copy {
+
+  font: 100% "Arial";
+  font-size: 12pt;
+  color: theme-color("danger");
+  //For smaller devices
+  @media (max-width: 576px) {
+    //padding-right: 10px;
+    //padding-left: 10px;
+  }
+
+}
+
+.no-hover-underline:hover {
+  text-decoration: none;
+}
+
+.gm-btn{
+  width: 190px ;
+  height: 40px;
+
+  //This is for small devices till the max width of the device or screen is 576, so anything below 576 will take these specs
+  @media (max-width: 576px) {
+    width: 100%;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.tiles-btn{
+  @media (max-width: 576px) {
+    width: 100%;
+    height: 40px;
+  }
+}
+
+.gm-top-nav-btn{
+
+  color: white !important;
+  margin-bottom: 5px;
+
+}
+
+.gm-bottom-nav-btn{
+
+  color: white !important;
+
+  //This is for small devices
+  @media (max-width: 576px) {
+    width: 100%;
+    height: 40px;
+    background-color: #555555;
+    border-color: #555555;
+
+    margin-bottom: 5px;
+    //margin-left: 10px;
+  }
+}
+
+.btn {
+  //@todo: changing button font here skews the vertical alignment, needs to be fixed
+  font: 100% "Trade Gothic";
+  font-size: 14pt;
+  color: white !important;
+
+}
+
+.btn-primary {
+  color: #FFFFFF;
+}
+
+.navbar-light {
+  color: #F1F1F1
+}
+
+.bordertest {
+  //border-color: mediumpurple;
+  //border-style: solid;
+  padding: 20px;
+  background-color: white;
+}
+.bordertest2 {
+  //border-color: mediumspringgreen;
+  //border-style: solid;
+  width: 980px;
+  padding: 20px;
+  background-color: lightgrey;
+  @media (max-width: 576px) {
+    width: 100%;
+    padding: 10px;
+    background-color: lightgrey;
+  }
+}
+.bordertest3{
+  border-color: #f1f1f1;
+  border-style: solid;
+  border-width: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.bordertest4 {
+  cellpadding :7px;
+}
+
+.button-vertical-middle{
+  vertical-align: middle;
+  text-align: right;
+}
+
+.second-div-for-image {
+  text-align: center;
+  //padding-right: 20px;
+  //padding-left: 20px;
+  background-color: lightgrey;
+}
+.four-logos {
+  padding-top: 20px;
+  padding-bottom: 18px;
+}
+
+.image-tiles {
+  width: 150px;
+  height: 150px;
+}
+
+.first-status-div{
+  padding-left: 0px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+  margin-bottom: 181px;
+
+  //For smaller devices
+  @media (max-width: 576px) {
+    margin-bottom: 375px;
+  }
+
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  /*height: 80px;*/
+  background-color: #696969;
+}
+
+.spacing-square-16{
+  margin-bottom: 16px;
+}
+.spacing-square-16-top{
+  margin-top: 16px;
+}
+.spacing-square-20{
+  margin-bottom: 20px;
+}
+.spacing-square-20-top{
+  margin-top: 20px;
+}
+.spacing-square-big{
+  margin-bottom: 40px;
+  //For smaller devices
+  @media (max-width: 576px) {
+    margin-bottom: 35px;
+  }
+}
+.spacing-square-big-top{
+  margin-top: 40px;
+  //For smaller devices
+  @media (max-width: 576px) {
+    margin-top: 35px;
+  }
+}
+
+.custom-square-big-top{
+
+  //For smaller devices
+  @media (max-width: 576px) {
+    margin-top: 35px;
+  }
+}
+
+.not-bold{
+  font-weight: normal;
+}
+
+.faq{
+  width: 66.66%;
+  font: 100% "Arial";
+  //font-weight: bold;
+  font-size: 12pt;
+  color: theme-color("secondary");
+
+
+  //For smaller devices
+  @media (max-width: 576px) {
+
+    font: 100% "Arial";
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 14pt;
+    p{
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
+}
+
+//Equal to "px-0" by default
+.custom1{
+  @media (max-width: 576px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+.custom2{
+  @media (max-width: 576px) {
+    padding-left: 15px;
+    padding-right: 0px;
+  }
+}
+
+.custom-radio-circles{
+  width: 13px;
+  height: 13px;
+  @media (max-width: 576px) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.border-white-right {
+  border-right: 1px solid #ffffff !important;
+}
+
+.border-gray-left {
+  border-left: 1px solid #999999 !important;
+}
+
+.navbar-toggler{
+  font-size: 1.8vh;
+  background-color: theme-color("primary");
+}
+
+.nav-toggler-icon{
+  font-size: 2.5vh;
+}
+
+.navbar-toggler-btn{
+  color: #ffffff !important;
+}
+
+.pb-40{
+  padding-bottom: 40px;
+}
+
+.pt-30{
+  padding-top: 30px;
+}
+
+.mr-30{
+  margin-right: 30px;
+}
+
+.pr-20{
+  padding-right: 20px;
+}
+
+.pl-20{
+  padding-left: 20px;
+}
+
+.pb-20{
+  padding-bottom: 20px;
+}
+
+.pt-20{
+  padding-top: 20px;
+}
+
+.mt-20{
+  margin-top: 20px;
+}
+
+.mb-18{
+  margin-bottom: 18px;
+}
+
+.pb-18{
+  padding-bottom: 18px;
+}
+
+.pl-15{
+  padding-left: 15px;
+}
+
+.pl-10{
+  padding-left: 10px;
+}
+
+.p-10{
+  padding: 10px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
+.px-10{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.pt-10{
+  padding-top: 10px;
+}
+
+.pt-7{
+  padding-top: 7px;
+}
+
+.loading{
+  height:600;
+  width: 400
+}
+
+button:hover:disabled{
+  cursor: not-allowed;
+}
+
+.spinnerCentered{
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.dragDropFile{
+  border: 3px dashed #999 !important;
+  padding: 140px 50px 10px 50px !important;
+  cursor: move !important;
+  position:relative !important;
+  width: 200px !important;
+  //height: 200px !important;
+
+  @media (max-width: 576px) {
+    margin-left: 10px;
+  }
+}
+
+.dragDropFile:before {
+  content: "DRAG & DROP FILE HERE TO UPLOAD";
+  display: block !important;
+  position: absolute !important;
+  text-align: center !important;
+  top: 30% !important;
+  left: 50% !important;
+  width: 200px !important;
+  height: 40px !important;
+  margin: -25px 0 0 -100px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  color: #999 !important;
+
+  @media (max-width: 576px) {
+    margin-left: 10px;
+  }
+}
+
+.dragDropFileError {
+  width: 350px;
+}
+
+.input-label{
+  color: blue;
+  cursor: pointer;
+  height: 250px;
+  width: 250px;
+}
+
+.input-label:hover{
+  text-decoration: underline;
+}
+
+#file_input{
+  display:none;
+}
+
+.input-span{
+  cursor: pointer;
+  width: 250px;
+  height: 250px;
+  background-color: #f8f8f8;
+  border: 3px dashed #ddd;
+}
+
+.font-awesome-cloud{
+
+  font-size: 10vh;
+
+}
+
+.bs-datepicker-head {
+  background-color: theme-color("secondary") !important;
+  //background-color: #B1C100 !important;
+}
+.theme-green .bs-datepicker-body table td.week span {
+  color: #B1C100 !important;
+}
+
+.dropdown-menu {
+  width: 100%;
+  background-color: #F1F1F1;
+  color: #F1F1F1;
+  flex-direction: column;
+  //min-height: 150px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-top: 0px;
+  border-top:0px;
+}
+
+.brandImages {
+  padding-left:25% ;
+  padding-right: 25% ;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.plpr-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.pt-8 {
+  padding-top: 8px;
+}
+
+.ml-0 {
+  margin-left: 0px;
+}
+
+.caret {
+  color: black;
+
+  margin-top: 4px;
+  padding-left: 8px;
+
+}
+
+.tileDisclaimer {
+  padding-top: 5px;
+  font-size: 10pt;
+}

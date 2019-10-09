@@ -1,0 +1,21 @@
+<div class="container ">
+
+    <div class="row">
+        <div class="col-md-9 ">
+            <h1 class="text-uppercase spacing-square-big-top spacing-square-16 px-0" *ngIf="userType !== 'fleet'">Rebate Success</h1>
+            <h1 class="text-uppercase spacing-square-big-top spacing-square-16 px-0" *ngIf="userType === 'fleet'">Congratulations!</h1>
+
+            <div *ngIf="submissionService.submissionStatus == 'approved'">
+                <p class="spacing-square-20 px-0">Thank you for submitting your {{promotionName}}. If we are unable to complete the validation process within 7-10 days, we will send you an email with the next steps.</p>
+            </div>
+            <div *ngIf="submissionService.submissionStatus == 'validated'">
+            <p class="spacing-square-20 px-0">Thank you for submitting your {{promotionName}}.Your rebate has been validated and is out for approval. You will receive an email within 1-2 business days to confirm approval. Thank you for your business.</p>
+            </div>
+            <p class="spacing-square-20" *ngIf="userType === 'fleet'">
+                Your rebates have been uploaded. <br />
+                Rebates will be validated and an email sent once approved (allow 7 business days.)<br> Upon approval, your rebate check will be mailed.
+            </p>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary text-uppercase  gm-btn spacing-square-big spacing-square-big-top mx-0" (click)="back()">Submit Another Rebate</button>
+</div>

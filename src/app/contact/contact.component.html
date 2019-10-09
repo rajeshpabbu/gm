@@ -1,0 +1,511 @@
+<div class="container ">
+    <!--d-none d-sm-block-->
+    <div class="row">
+        <div class="col-md-9">
+            <h1 class="text-uppercase spacing-square-20 spacing-square-big-top px-0">Contact Us</h1>
+
+            <p class="spacing-square-20 px-0">If you aren’t able to find your rebate, or have a question about your rebate, please feel free to contact us.<br> Call us at 1.844.656.5369, or use the form below.</p>
+
+            <p class="alert-copy spacing-square-big px-0">Fields marked with * are required.</p>
+
+        </div>
+    </div>
+
+
+    <form action="https://forms.na1.netsuite.com/app/site/crm/externalcasepage.nl?compid=3743794&formid=35&h=a64f84a9dd57d23f962a" #contact method="POST"
+           enctype="multipart/form-data" >
+        <div class="row col-md-6">
+            <!--<div class="col-xs">-->
+            <h2 class="text-uppercase spacing-square-20">Your contact information</h2>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="firstName">First Name*</label>
+                <input type="text" class="form-control " id="firstName" name="firstName" pattern="[A-Za-z0-9 -'.]+$" placeholder=""  [(ngModel)]="model.firstName"
+                       maxlength="25"  #firstName="ngModel" required>
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="firstName.errors.required">
+                        First Name is required.
+                    </div>
+                    <div *ngIf="firstName.errors.maxlength">
+                        First Name must be a maximum of 25 characters long.
+                    </div>
+                    <div *ngIf="firstName.errors.pattern">
+                    First Name contains invalid characters.
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="lastName">Last Name*</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder=" " pattern="[A-Za-z0-9 -'.]+$" [(ngModel)]="model.lastName" maxlength="25"  #lastName="ngModel" required>
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="lastName.errors.required">
+                        Last Name is required.
+                    </div>
+                    <div *ngIf="lastName.errors.maxlength">
+                        Last Name must be a maximum of 25 characters long.
+                    </div>
+                    <div *ngIf="lastName.errors.pattern">
+                        Last Name contains invalid characters.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="custevent_address_1">Street Address 1*</label>
+                <input type="text" class="form-control" id="custevent_address_1" name="custevent_address_1" placeholder=" " [(ngModel)]="model.custevent_address_1" maxlength="26"  #custevent_address_1="ngModel" required>
+                <div *ngIf="custevent_address_1.invalid && (custevent_address_1.dirty || custevent_address_1.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="custevent_address_1.errors.required">
+                        Street Address 1 is required.
+                    </div>
+                    <div *ngIf="custevent_address_1.errors.maxlength">
+                        Street Address 1 must be a maximum of 26 characters long.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="custevent_address_2">Street Address 2</label>
+                <input type="text" class="form-control" id="custevent_address_2" name="custevent_address_2" placeholder=" " [(ngModel)]="model.custevent_address_2" maxlength="26"  #custevent_address_2="ngModel"   >
+                <div *ngIf="custevent_address_2.invalid && (custevent_address_2.dirty || custevent_address_2.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="custevent_address_2.errors.maxlength">
+                        Street Address 2 must be a maximum of 16 characters long.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="custevent_city">City*</label>
+                <input type="text" class="form-control" id="custevent_city" name="custevent_city" placeholder=" " [(ngModel)]="model.custevent_city" maxlength="18"  #custevent_city="ngModel"  required>
+                <div *ngIf="custevent_city.invalid && (custevent_city.dirty || custevent_city.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="custevent_city.errors.required">
+                        City is required.
+                    </div>
+                    <div *ngIf="custevent_city.errors.maxlength">
+                        City must be a maximum of 18 characters long.
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="custevent_state">State*</label>
+                <select id="custevent_state" class="form-control" name="custevent_state" placeholder=" " [(ngModel)]="model.custevent_state" #custevent_state="ngModel" required>
+                    <option selected value="">Select your state</option>
+                    <option value="0">Alabama</option>
+                    <option value="1">Alaska</option>
+                    <option value="2">Arizona</option>
+                    <option value="3">Arkansas</option>
+                    <option value="4">California</option>
+                    <option value="5">Colorado</option>
+                    <option value="6">Connecticut</option>
+                    <option value="7">Delaware</option>
+                    <option value="8">District of Columbia</option>
+                    <option value="9">Florida</option>
+                    <option value="10">Georgia</option>
+                    <option value="11">Hawaii</option>
+                    <option value="12">Idaho</option>
+                    <option value="13">Illinois</option>
+                    <option value="14">Indiana</option>
+                    <option value="15">Iowa</option>
+                    <option value="16">Kansas</option>
+                    <option value="17">Kentucky</option>
+                    <option value="18">Louisiana</option>
+                    <option value="19">Maine</option>
+                    <option value="20">Maryland</option>
+                    <option value="21">Massachusetts</option>
+                    <option value="22">Michigan</option>
+                    <option value="23">Minnesota</option>
+                    <option value="24">Mississippi</option>
+                    <option value="25">Missouri</option>
+                    <option value="26">Montana</option>
+                    <option value="27">Nebraska</option>
+                    <option value="28">Nevada</option>
+                    <option value="29">New Hampshire</option>
+                    <option value="30">New Jersey</option>
+                    <option value="31">New Mexico</option>
+                    <option value="32">New York</option>
+                    <option value="33">North Carolina</option>
+                    <option value="34">North Dakota</option>
+                    <option value="35">Ohio</option>
+                    <option value="36">Oklahoma</option>
+                    <option value="37">Oregon</option>
+                    <option value="39">Puerto Rico</option>
+                    <option value="38">Pennsylvania</option>
+                    <option value="40">Rhode Island</option>
+                    <option value="41">South Carolina</option>
+                    <option value="42">South Dakota</option>
+                    <option value="43">Tennessee</option>
+                    <option value="44">Texas</option>
+                    <option value="45">Utah</option>
+                    <option value="46">Vermont</option>
+                    <option value="47">Virginia</option>
+                    <option value="48">Washington</option>
+                    <option value="49">West Virginia</option>
+                    <option value="50">Wisconsin</option>
+                    <option value="51">Wyoming</option>
+                </select>
+                <div *ngIf="custevent_state.invalid && (custevent_state.dirty || custevent_state.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="custevent_state.errors.required">
+                        State is required.
+                    </div>
+                    <!--<div *ngIf="state.errors.maxlength">-->
+                    <!--State must be a maximum of 16 characters long.-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="custevent_zip">Zip*</label>
+                <input type="text" class="form-control" id="custevent_zip"  placeholder=" " name="custevent_zip" [(ngModel)]="model.custevent_zip" maxlength="10" minlength="5"  #custevent_zip="ngModel" pattern="^\d{5}(?:[-\s]\d{4})?$" required>
+                <div *ngIf="custevent_zip.invalid && (custevent_zip.dirty || custevent_zip.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="custevent_zip.errors.required">
+                        Zip is required.
+                    </div>
+                    <div *ngIf="custevent_zip.errors.maxlength">
+                        Zip must be a maximum of 10 characters long.
+                    </div>
+                    <div *ngIf="custevent_zip.errors.minlength">
+                        Zip must be a minimum of 5 characters long.
+                    </div>
+                    <div *ngIf="custevent_zip.errors.pattern">
+                        Zip must be either XXXXX or XXXXX-XXXX and all numeric
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="custevent_phone">Phone Number*</label>
+                <input type="text" class="form-control" id="custevent_phone" placeholder=" " name="custevent_phone" [(ngModel)]="model.custevent_phone" minlength="10" maxlength="10" #custevent_phone="ngModel" pattern="[0-9]{10}"  required>
+                <div *ngIf="custevent_phone.invalid && (custevent_phone.dirty || custevent_phone.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="custevent_phone.errors.required">
+                        Phone is required.
+                    </div>
+                    <div *ngIf="custevent_phone.errors.minlength">
+                        Phone must be a minimum of 10 characters long.
+                    </div>
+                    <div *ngIf="custevent_phone.errors.maxlength">
+                        Phone must be a maximum of 10 characters long.
+                    </div>
+                    <div *ngIf="custevent_phone.errors.pattern">
+                        Phone must be of 10 numbers without any special characters.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="email">Email*</label>
+                <input type="text" class="form-control" id="email" placeholder="" name="email" [(ngModel)]="model.email" maxlength="50"  #email="ngModel"
+                       pattern="^[a-zA-Z0-9._-]+@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,4}))$"
+                       required>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Email is required.
+                    </div>
+                    <div *ngIf="email.errors.maxlength">
+                        Email must be a maximum of 50 characters long.
+                    </div>
+                    <div *ngIf="email.errors.pattern">
+                        Email must be in the standard email format.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="email">Confirm Email*</label>
+                <input type="text" class="form-control" name="confirmEmail"  id="confirmEmail" [(ngModel)]="model.confirmEmail" pattern={{model.email}}  #confirmEmail="ngModel" required>
+                <div *ngIf="confirmEmail.errors && (confirmEmail.dirty || confirmEmail.touched)"
+                     class="alert alert-danger">
+                    <!--Does not match !-->
+                    <div [hidden]="!confirmEmail.errors.required">
+                        Please confirm the Email.
+                    </div>
+                    <!--<div [hidden]="!confirmEmail.errors.minlength">-->
+                        <!--Confirm Email must be at least 6 characters or longer.-->
+                    <!--</div>-->
+                    <div *ngIf="confirmEmail.errors.pattern">
+                        Emails must match.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row col-md-6">
+            <!--<div class="col-xs">-->
+            <h2 class="text-uppercase spacing-square-big-top px-0">Submission information</h2>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="custevent_offer_code">Offer Number*</label>
+                <input type="text" class="form-control" name="custevent_offer_code" id="custevent_offer_code" pattern="[A-Za-z0-9]+$" placeholder=" " #custevent_offer_code="ngModel"
+                       [(ngModel)]="model.custevent_offer_code" required>
+                <div *ngIf="custevent_offer_code.invalid && (custevent_offer_code.dirty || custevent_offer_code.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="custevent_offer_code.errors.required">
+                        Offer Number is required.
+                    </div>
+                    <div *ngIf="custevent_offer_code.errors.pattern">
+                        Offer Number contains invalid characters.
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="custevent_text_invoice_number">Invoice Number</label>
+                <input type="text" class="form-control" name="custevent_text_invoice_number" id="custevent_text_invoice_number" placeholder=" " #custevent_text_invoice_number="ngModel"
+                       [(ngModel)]="model.custevent_text_invoice_number">
+                <div *ngIf="custevent_text_invoice_number.invalid && (custevent_text_invoice_number.dirty || custevent_text_invoice_number.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="custevent_text_invoice_number.errors.required">
+                        Invoice Number is required.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+
+                <label for="date">Purchase Date*</label>
+                <div class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           name="date"
+                           id="date"
+                           [minDate]="minDate"
+                           [maxDate]="maxDate"
+                           #dp="bsDatepicker"
+                           bsDatepicker [(bsValue)]="bsValue"
+                           [(ngModel)]="model.date"
+                           #date="ngModel"
+                           required>
+
+
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button" (click)="dp.toggle()">
+                            <fa name="calendar"></fa>
+                        </button>
+                    </div>
+
+
+                </div>
+                <div *ngIf="date.invalid && (date.dirty || date.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="date.errors.required">
+                        Purchase Date is required.
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="issue">Select Issue*</label>
+                <select id="issue" class="form-control" name="issue" #issue="ngModel" [(ngModel)]="model.issue" required>
+                    <option disabled selected>-Select Issue-</option>
+                    <option value="1">What is the status of my rebate?</option>
+                    <option value="2">How do I redeem my rebate?</option>
+                    <option value="3">Question about processing my rebate online</option>
+                    <option value="4">My eligibility has not been confirmed</option>
+                    <option value="5">I have not received my issued rebate</option>
+                    <option value="6">Question about checking the status of my rebate</option>
+                    <option value="7">I did not receive a confirmation notice</option>
+                    <option value="8">I received an error message</option>
+                    <option value="9">General Inquiry</option>
+                    <option value="10">Other</option>
+                </select>
+                <div *ngIf="issue.invalid && (issue.dirty || issue.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="issue.errors.required">
+                        Please select an Issue.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="incomingmessage">More Information for Your Inquiry</label>
+                <textarea name="incomingmessage" class="form-control" id="incomingmessage" rows="3" #incomingmessage="ngModel" [(ngModel)]="model.incomingmessage" placeholder="Enter more information for your inquiry">
+                </textarea>
+                <div *ngIf="incomingmessage.invalid && (incomingmessage.dirty || incomingmessage.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="incomingmessage.errors.required">
+                        Please select an Issue.
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <input type="hidden" name="custevent_purchase_date" ng-value="model.date | date: 'MM/dd/yyyy'">
+        <input type="hidden" name="custevent_from_website_fs" value="https://mycertifiedservicerebates.com/contact">
+
+        <div class="row col-md-6 px-0 mx-0">
+            <button type="submit" (click)="contact.submit()" class="btn btn-primary text-uppercase gm-btn spacing-square-big spacing-square-big-top px-0 mx-0" >Submit</button>
+        </div>
+
+    </form>
+
+
+</div>
+
+
+
+
+<!--<div class="container d-block d-sm-none ">-->
+
+    <!--<div class="row">-->
+        <!--<div class="col-xs">-->
+            <!--<h1 class="text-uppercase">Contact Us</h1>-->
+
+            <!--<p>If you arn't able to find your rebate, or ave a question bout rebate, please feel free to contact us.-->
+                <!--<br> Call us at 1-844-656-5369, or use the form below.-->
+
+            <!--<p class="warning">Fields marked with * are required.</p>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <!--<form>-->
+        <!--<div class="row">-->
+            <!--&lt;!&ndash;<div class="col-xs">&ndash;&gt;-->
+            <!--<h2 class="text-uppercase">Your contact information</h2>-->
+        <!--</div>-->
+        <!--<div class="form-row">-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom03">First Name*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom03" placeholder="First Name" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid city.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom04">Last Name*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom04" placeholder="Last Name" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid state.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom05">Street Address 1*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom05" placeholder="Street Address 1" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid zip.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom06">Street Address 2</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom06" placeholder="Street Address 2" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid zip.-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="form-row">-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom03">City*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom03" placeholder="City" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid city.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom044">State*</label>-->
+                <!--<select id="validationCustom044" class="form-control">-->
+                    <!--<option selected>Select State</option>-->
+                    <!--<option>Dealer</option>-->
+                    <!--<option>ISC</option>-->
+                    <!--<option>Other</option>-->
+                <!--</select>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid state.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom05">Zip*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid zip.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom06">Phone Number*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom06" placeholder="(   )   -    " required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid zip.-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="row">-->
+            <!--&lt;!&ndash;<div class="col-xs">&ndash;&gt;-->
+            <!--<h2 class="text-uppercase">Submission information</h2>-->
+        <!--</div>-->
+        <!--<div class="form-row">-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom03">First Name*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom03" placeholder="First Name" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid city.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom04">Last Name*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom04" placeholder="Last Name" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid state.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom05">Street Address 1*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom05" placeholder="Street Address 1" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid zip.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom04">Last Name*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom04" placeholder="Last Name" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid state.-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3 mb-3">-->
+                <!--<label for="validationCustom05">Street Address 1*</label>-->
+                <!--<input type="text" class="form-control" id="validationCustom05" placeholder="Street Address 1" required>-->
+                <!--<div class="invalid-feedback">-->
+                    <!--Please provide a valid zip.-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+
+        <!--<div class="row">-->
+            <!--<a  class="btn btn-primary gm-btn text-uppercase " routerLink="/">Submit</a>-->
+        <!--</div>-->
+
+    <!--</form>-->
+
+
+<!--</div>-->
+
+

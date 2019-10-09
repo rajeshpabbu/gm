@@ -1,0 +1,116 @@
+<div class="container d-none d-sm-block">
+
+        <div class="row">
+
+            <h1 class="text-uppercase spacing-square-big-top spacing-square-20">Fleet Account</h1>
+        </div>
+
+    <div id="main-content" *ngIf="state === 'main'">
+
+        <div class="row ">
+            <h2 class="text-uppercase">Step 3 of 3 </h2>
+        </div>
+        <div class="row">
+            <p>Please upload your completed bulk rebate files(s) below.</p>
+        </div>
+        <div class="row spacing-square-big">
+            <p>You can upload files in the following formats: JPG, JPEG, PNG, PDF, DOC</p>
+        </div>
+
+        <div class="row">
+            <div class="col pl-0">
+                <input class="dragDropFile" type="file"
+                       #file
+                       (change) = "onFileChange($event)" />
+
+                <div *ngIf="errors.length > 0" class="alert alert-danger dragDropFileError" >
+                    {{ errors[errors.length-1] }}
+                </div>
+            </div>
+
+            <div class="col" *ngIf="fileNames.length > 0">
+                <div class="row pl-0">
+                    <h3>Attached Files</h3>
+                </div>
+                <div class="row pl-0">
+                    <ul>
+                        <li *ngFor="let name of fileNames">{{ name }}</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <button class="btn btn-primary text-uppercase gm-btn spacing-square-big-top" (click)="submit()" [disabled]="fileNames.length < 1">Upload</button>
+        </div>
+
+
+    </div>
+
+    <div id="loading-content" *ngIf="state === 'loading'">
+
+        <div class="row">
+            <h2 class="text-uppercase">Loading</h2>
+        </div>
+
+        <div class="row">
+            <p class="spacing-square-big">Please wait while we upload your files</p>
+        </div>
+
+        <div class="row">
+            <img src="/assets/images/spinner.gif" />
+        </div>
+
+    </div>
+
+    <div id="request-success-content" *ngIf="state === 'success'">
+
+
+        <div class="row">
+            <h2 class="text-uppercase">Congratulations!</h2>
+        </div>
+
+        <div class="row">
+            <p class="spacing-square-big">Your rebates have been uploaded. Rebates will be validated and an email sent once <br /> approved (allow 7 business days). Upon approval, your rebate check will be mailed.</p>
+        </div>
+
+        <div class="row">
+            <button class="btn btn-primary text-uppercase gm-btn spacing-square-big-top" (click)="restart()">Upload More Files</button>
+        </div>
+
+
+    </div>
+
+    <div id="request-fail-content" *ngIf="state === 'error'">
+
+
+        <div class="row">
+            <h2 class="text-uppercase">Uh oh!</h2>
+        </div>
+
+        <div class="row">
+            <p class="spacing-square-big">There was an unexpected error submitting your rebate, please try again in a few minutes.</p>
+        </div>
+
+        <div class="row">
+            <button class="btn btn-primary text-uppercase gm-btn spacing-square-big-top" (click)="restart()">Try Again</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="d-block d-sm-none container">
+
+    <div class="row">
+        <h1 class="text-uppercase spacing-square-big-top spacing-square-20">Fleet Account</h1>
+    </div>
+    <p class="spacing-square-20 custom1">
+        Visit this site on your desktop or PC to download the spreadsheet, enter your rebate information and upload the
+        completed file.
+    </p>
+
+</div>

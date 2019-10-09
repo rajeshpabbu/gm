@@ -1,0 +1,51 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs">
+            <h1 class="text-uppercase spacing-square-big spacing-square-big-top">Get Your Rebate Started</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+
+            <div class="row">
+                <h2 class="text-uppercase spacing-square-20">Are you a consumer?</h2>
+            </div>
+
+            <div class="row">
+                <a class="btn btn-primary gm-btn text-uppercase col-sm-4 mb-18" (click)="selectUserType('online')">Submit
+                    Rebate Online</a>
+            </div>
+
+
+            <div class="row">
+                <a class="btn btn-secondary gm-btn text-uppercase col-sm-4 " (click)="selectUserType('mail-in')">Mail-In
+                    Rebate</a>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+
+            <!--<h2 class="text-uppercase"><span class="text-primary">OR</span> Fleet Account?</h2>-->
+            <!--<a  class="btn btn-primary text-uppercase col-sm-4 gm-btn mx-0" routerLink="/fleet">Upload Bulk Rebates</a>-->
+
+
+            <div class="row">
+                <h2 class="text-uppercase spacing-square-20 custom-square-big-top"><span class="text-primary">OR </span>Fleet Account?</h2>
+            </div>
+
+            <div class="row d-none d-sm-block">
+                <a class="btn btn-primary text-uppercase col-sm-4 gm-btn " (click)="selectUserType('fleet')">Upload Bulk Rebates</a>
+            </div>
+            <div class="d-block d-sm-none">
+                <div class="row ">
+                    <a class="btn btn-primary text-uppercase col-sm-4 gm-btn " routerLink="/fleet">Upload Bulk Rebates</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

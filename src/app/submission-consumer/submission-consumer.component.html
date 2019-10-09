@@ -1,0 +1,471 @@
+<div class="container ">
+    <!--d-none d-sm-block-->
+    <div class="row">
+        <div class="col-md-9 ">
+            <h1 class="text-uppercase spacing-square-big-top spacing-square-16 px-0">Almost Done!</h1>
+
+            <h2 class="text-uppercase spacing-square-20 px-0">Step 3 of 3 </h2>
+
+            <p class="spacing-square-20 px-0">By providing your contact information below you consent that GM and/or a
+                GM dealer may contact you with any GM offers and GM product information. For more information on the GM
+                Privacy Statement please visit our website <a href="http://www.gm.com/privacy-statement.html"
+                                                              target="_blank">http://www.gm.com/privacy</a>.</p>
+
+
+        </div>
+    </div>
+    <form #submission="ngForm">
+
+        <div class="form-row">
+            <div class="col-md-3">
+                <label for="firstName">First Name*</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" pattern="[A-Za-z0-9 -'.]+$"
+                       [(ngModel)]="model.firstName"
+                       maxlength="25" #firstName="ngModel" required>
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="firstName.errors.required">
+                        First Name is required.
+                    </div>
+                    <div *ngIf="firstName.errors.maxlength">
+                        First Name must be a maximum of 25 characters long.
+                    </div>
+                    <div *ngIf="firstName.errors.pattern">
+                        First Name can contain only alphanumerics, ., ' and -
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="lastName">Last Name*</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" pattern="[A-Za-z0-9 -'.]+$"
+                       [(ngModel)]="model.lastName" maxlength="25" #lastName="ngModel" required>
+
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="lastName.errors.required">
+                        Last Name is required.
+                    </div>
+                    <div *ngIf="lastName.errors.maxlength">
+                        Last Name must be a maximum of 10 characters long.
+                    </div>
+                    <div *ngIf="lastName.errors.pattern">
+                        Last Name can contain only alphanumerics, ., ' and -
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="address1">Street Address 1*</label>
+                <input type="text" class="form-control" id="address1" name="address1" placeholder=" "
+                       [(ngModel)]="model.address1" maxlength="26" #address1="ngModel" required>
+                <div *ngIf="address1.invalid && (address1.dirty || address1.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="address1.errors.required">
+                        Street Address 1 is required.
+                    </div>
+                    <div *ngIf="address1.errors.maxlength">
+                        Street Address 1 must be a maximum of 26 characters long.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="address2">Street Address 2</label>
+                <input type="text" class="form-control" id="address2" name="address2" placeholder=" "
+                       [(ngModel)]="model.address2" maxlength="26" #address2="ngModel">
+                <div *ngIf="address2.invalid && (address2.dirty || address2.touched)"
+                     class="alert alert-danger">
+
+                    <div *ngIf="address2.errors.maxlength">
+                        Street Address 2 must be a maximum of 26 characters long.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="city">City*</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder=" " [(ngModel)]="model.city"
+                       maxlength="18" #city="ngModel" required>
+                <div *ngIf="city.invalid && (city.dirty || city.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="city.errors.required">
+                        City is required.
+                    </div>
+                    <div *ngIf="city.errors.maxlength">
+                        City must be a maximum of 18 characters long.
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="state">State*</label>
+                <select id="state" class="form-control" name="state" [(ngModel)]="model.state" #state="ngModel"
+                        required>
+                    <option disabled selected>Select your state</option>
+                    <option value="0">Alabama</option>
+                    <option value="1">Alaska</option>
+                    <option value="2">Arizona</option>
+                    <option value="3">Arkansas</option>
+                    <option value="4">California</option>
+                    <option value="5">Colorado</option>
+                    <option value="6">Connecticut</option>
+                    <option value="7">Delaware</option>
+                    <option value="8">District of Columbia</option>
+                    <option value="9">Florida</option>
+                    <option value="10">Georgia</option>
+                    <option value="11">Hawaii</option>
+                    <option value="12">Idaho</option>
+                    <option value="13">Illinois</option>
+                    <option value="14">Indiana</option>
+                    <option value="15">Iowa</option>
+                    <option value="16">Kansas</option>
+                    <option value="17">Kentucky</option>
+                    <option value="18">Louisiana</option>
+                    <option value="19">Maine</option>
+                    <option value="20">Maryland</option>
+                    <option value="21">Massachusetts</option>
+                    <option value="22">Michigan</option>
+                    <option value="23">Minnesota</option>
+                    <option value="24">Mississippi</option>
+                    <option value="25">Missouri</option>
+                    <option value="26">Montana</option>
+                    <option value="27">Nebraska</option>
+                    <option value="28">Nevada</option>
+                    <option value="29">New Hampshire</option>
+                    <option value="30">New Jersey</option>
+                    <option value="31">New Mexico</option>
+                    <option value="32">New York</option>
+                    <option value="33">North Carolina</option>
+                    <option value="34">North Dakota</option>
+                    <option value="35">Ohio</option>
+                    <option value="36">Oklahoma</option>
+                    <option value="37">Oregon</option>
+                    <option value="39">Puerto Rico</option>
+                    <option value="38">Pennsylvania</option>
+                    <option value="40">Rhode Island</option>
+                    <option value="41">South Carolina</option>
+                    <option value="42">South Dakota</option>
+                    <option value="43">Tennessee</option>
+                    <option value="44">Texas</option>
+                    <option value="45">Utah</option>
+                    <option value="46">Vermont</option>
+                    <option value="47">Virginia</option>
+                    <option value="48">Washington</option>
+                    <option value="49">West Virginia</option>
+                    <option value="50">Wisconsin</option>
+                    <option value="51">Wyoming</option>
+                </select>
+                <div *ngIf="state.invalid && (state.dirty || state.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="state.errors.required">
+                        State is required.
+                    </div>
+                    <!--<div *ngIf="state.errors.maxlength">-->
+                    <!--State must be a maximum of 16 characters long.-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="zip">Zip*</label>
+                <input type="text" class="form-control" id="zip" placeholder=" " name="zip" [(ngModel)]="model.zip"
+                       maxlength="10" minlength="5" #zip="ngModel" pattern="^\d{5}(?:[-\s]\d{4})?$" required>
+                <div *ngIf="zip.invalid && (zip.dirty || zip.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="zip.errors.required">
+                        Zip is required.
+                    </div>
+                    <div *ngIf="zip.errors.maxlength">
+                        Zip must be a maximum of 10 characters long.
+                    </div>
+                    <div *ngIf="zip.errors.minlength">
+                        Zip must be a maximum of 5 characters long.
+                    </div>
+                    <div *ngIf="zip.errors.pattern">
+                        Zip must be either XXXXX or XXXXX-XXXX and all numeric
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="phone">Phone Number*</label>
+                <input type="text" class="form-control" id="phone" placeholder="" name="phone"
+                       [(ngModel)]="model.phoneNumber" maxlength="10" minlength="10" pattern="[0-9]{10}"
+                       #phone="ngModel" required>
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="phone.errors.required">
+                        Phone is required.
+                    </div>
+                    <div *ngIf="phone.errors.maxlength">
+                        Phone must be a maximum of 10 characters long.
+                    </div>
+                    <div *ngIf="phone.errors.minlength">
+                        Phone must be a minimum of 10 characters long.
+                    </div>
+                    <div *ngIf="phone.errors.pattern">
+                        Phone must be of 10 numbers without any special characters.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+                <label for="email">Email*</label>
+                <input type="text" class="form-control" id="email" placeholder="" name="email" [(ngModel)]="model.email"
+                       maxlength="50"
+                       pattern="^[a-zA-Z0-9._-]+@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,4}))$"
+                       #email="ngModel" required>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Email is required.
+                    </div>
+                    <div *ngIf="email.errors.maxlength">
+                        Email must be a maximum of 50 characters long.
+                    </div>
+                    <div *ngIf="email.errors.pattern">
+                        Email must be in the standard email format.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="email">Confirm Email*</label>
+                <input type="text" class="form-control" id="confirmEmail" name="confirmEmail"
+                       [(ngModel)]="model.confirmEmail" pattern={{model.email}} #confirmEmail="ngModel" required>
+                <!--equalTo="model.email"-->
+                <!--confirmEmailValidator-->
+                <div *ngIf="confirmEmail.errors && (confirmEmail.dirty || confirmEmail.touched)"
+                     class="alert alert-danger">
+                    <!--Does not match !-->
+                    <div [hidden]="!confirmEmail.errors.required">
+                        Please confirm the Email, it is required.
+                    </div>
+                    <div [hidden]="!confirmEmail.errors.maxlength">
+                        Confirm Email must be a maximum of 50 characters long.
+                    </div>
+                    <div [hidden]="!repassword.errors.pattern">
+                        Emails must match.
+                    </div>
+
+                    <!--<div *ngIf="confirmEmail.errors.required">-->
+                    <!--email is required.-->
+                    <!--</div>-->
+                    <!--<div *ngIf="confirmEmail.errors.maxlength">-->
+                    <!--email must be a maximum of 16 characters long.-->
+                    <!--</div>-->
+                    <!--<div *ngIf="confirmEmail.errors.pattern">-->
+                    <!--email must be all numeric.-->
+                    <!--</div>-->
+                </div>
+            </div>
+
+        </div>
+        <div class="px-0 col-md-6 mb-3 ">
+            <p class="spacing-square-big px-0"><i>
+                If an email address is provided, we will email you status updates regarding your rebate submission.
+            </i>
+            </p>
+        </div>
+
+        <div class="spacing-square-big" *ngIf="submissionService.promotion.offerCode === '66070'">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label for="businessName">ISC Business Name*</label>
+                    <input type="text" class="form-control" id="businessName" name="businessName"
+                           pattern="[A-Za-z0-9 -'.]+$"
+                           [(ngModel)]="model.businessName"
+                           maxlength="25" #businessName="ngModel" required>
+                    <div *ngIf="businessName.invalid && (businessName.dirty || businessName.touched)"
+                         class="alert alert-danger">
+
+                        <div *ngIf="businessName.errors.required">
+                            ISC Business Name is required.
+                        </div>
+                        <div *ngIf="businessName.errors.maxlength">
+                            ISC Business Name must be a maximum of 25 characters long.
+                        </div>
+                        <div *ngIf="businessName.errors.pattern">
+                            ISC Business Name can contain only alphanumerics, ., ' and -
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="advisorEmail">Dealer Parts Consultant Email*</label>
+                    <input type="text" class="form-control" id="advisorEmail" placeholder="" name="advisorEmail"
+                           [(ngModel)]="model.advisorEmail"
+                           maxlength="50"
+                           pattern="^[a-zA-Z0-9._-]+@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,4}))$"
+                           #advisorEmail="ngModel" required>
+                    <div *ngIf="advisorEmail.invalid && (advisorEmail.dirty || advisorEmail.touched)"
+                         class="alert alert-danger">
+                        <div *ngIf="advisorEmail.errors.required">
+                            Dealer Parts Consultant Email is required.
+                        </div>
+                        <div *ngIf="advisorEmail.errors.maxlength">
+                            Dealer Parts Consultant Email must be a maximum of 50 characters long.
+                        </div>
+                        <div *ngIf="advisorEmail.errors.pattern">
+                            Dealer Parts Consultant Email must be in the standard email format.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label for="advisorFirstName">Dealer Parts Consultant First Name*</label>
+                    <input type="text" class="form-control" id="advisorFirstName" name="advisorFirstName"
+                           pattern="[A-Za-z0-9 -'.]+$"
+                           [(ngModel)]="model.advisorFirstName"
+                           maxlength="25" #advisorFirstName="ngModel" required>
+                    <div *ngIf="advisorFirstName.invalid && (advisorFirstName.dirty || advisorFirstName.touched)"
+                         class="alert alert-danger">
+
+                        <div *ngIf="advisorFirstName.errors.required">
+                            Dealer Parts Consultant First Name is required.
+                        </div>
+                        <div *ngIf="advisorFirstName.errors.maxlength">
+                            Dealer Parts Consultant First Name must be a maximum of 25 characters long.
+                        </div>
+                        <div *ngIf="advisorFirstName.errors.pattern">
+                            Dealer Parts Consultant First Name can contain only alphanumerics, ., ' and -
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="advisorLastName">Dealer Parts Consultant Last Name*</label>
+                    <input type="text" class="form-control" id="advisorLastName" name="advisorLastName"
+                           pattern="[A-Za-z0-9 -'.]+$"
+                           [(ngModel)]="model.advisorLastName"
+                           maxlength="25" #advisorLastName="ngModel" required>
+                    <div *ngIf="advisorLastName.invalid && (advisorLastName.dirty || advisorLastName.touched)"
+                         class="alert alert-danger">
+
+                        <div *ngIf="advisorLastName.errors.required">
+                            Dealer Parts Consultant Last Name is required.
+                        </div>
+                        <div *ngIf="advisorLastName.errors.maxlength">
+                            Dealer Parts Consultant Last Name must be a maximum of 25 characters long.
+                        </div>
+                        <div *ngIf="advisorLastName.errors.pattern">
+                            Dealer Parts Consultant Last Name can contain only alphanumerics, ., ' and -
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row" *ngIf="submissionService.promotion.captureTransmissionType">
+            <div class="col-md-3 mb-3">
+                <label for="transType">Transmission Type*</label>
+                <select id="transType" class="form-control" name="transType"
+                        [(ngModel)]="submissionService.promoSpecificFields.transType"
+                        (ngModelChange)="submissionService.setTransType()" #transType="ngModel"
+                        required>
+                    <option disabled selected>Select your transmission type</option>
+                    <option value="auto_carbureted">Automatic Carbureted</option>
+                    <option value="auto_fi">Automatic Fuel Injected</option>
+                    <option value="manual">Manual</option>
+                </select>
+            </div>
+        </div>
+
+        <div *ngIf="submissionService.promotion.requiresLastFourCard">
+            <div class="px-0 col-md-6 mb-3">
+
+                <p class="px-0">If purchased with a GM or BuyPower® Card, please provide the last four digits of your
+                    credit card number for verification:</p>
+
+
+            </div>
+            <div class="row col-md-2">
+
+                <input type="text" class="form-control spacing-square-20" id="lastFourCard" placeholder="####"
+                       name="lastFourCard" [(ngModel)]="model.lastFourCard" maxlength="4" minlength="4"
+                       pattern="[0-9]{4}" #lastFourCard="ngModel">
+
+                <div *ngIf="lastFourCard.invalid && (lastFourCard.dirty || lastFourCard.touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="lastFourCard.errors.required">
+                        Last Four is required.
+                    </div>
+                    <div *ngIf="lastFourCard.errors.maxlength">
+                        Last Four must be a maximum of 4 characters long.
+                    </div>
+                    <div *ngIf="lastFourCard.errors.maxlength">
+                        Last Four must be a minimum of 4 characters long.
+                    </div>
+                    <div *ngIf="lastFourCard.errors.pattern">
+                        Last Four must be of 4 numbers.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="submissionService.promotion.hasVirtualCardOption">
+            <div class="px-0 col-md-6 mb-3">
+
+                <p class="spacing-square-20 px-0">How would you like to receive your rebate:</p>
+
+            </div>
+            <div class="px-0 col-md-6 mb-3">
+
+                <!--<label  >How would you like to receive your rebate:</label>-->
+
+                <div class="form-check">
+                    <input class="form-check-input custom-radio-circles" type="radio" name="cardType"
+                           [(ngModel)]="model.isVirtualCard" id="physicalCard"
+                           value="F" checked>
+                    <label class="form-check-label spacing-square-16" style="color: #555555;">
+                        Visa Prepaid Card
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input custom-radio-circles" type="radio" name="cardType"
+                           [(ngModel)]="model.isVirtualCard" id="virtualCard"
+                           value="T">
+                    <label class="form-check-label" style="color: #555555;">
+                        Virtual Prepaid Mastercard <br> (Can be used to purchase items online only)
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="submissionService.promotion.captureImage || submissionService.forceCaptureImage || submissionService.noVIN">
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="img1">Invoice Image 1*</label>
+                    <input type="file" class="form-control" id="img1" name="img1" #img1
+                           (change)="onFileChange($event, 1)" required>
+                    <div *ngIf="imgErrors[0]" class="alert alert-danger">
+                        {{ imgErrors[0] }}
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="img1">Invoice Image 2</label>
+                    <input type="file" class="form-control" id="img2" name="img2"
+                           (change)="onFileChange($event, 2)" #img2>
+                    <div *ngIf="imgErrors[1]" class="alert alert-danger">
+                        {{ imgErrors[1] }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button"
+                class="btn btn-primary text-uppercase  gm-btn spacing-square-big spacing-square-big-top mx-0"
+                [disabled]="!submission.valid || !isValidImage() || loading" (click)="submit()">Submit
+        </button>
+
+    </form>
+
+
+</div>

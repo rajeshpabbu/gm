@@ -1,0 +1,160 @@
+<!--Hidden only on xs-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block p-0 border-bottom">
+
+    <div class="container">
+        <div class="row">
+            <div class="mt-20 mb-18">
+                <a routerLink="/home" class="no-hover-underline">
+                    <img src="assets/images/logo1.png" height="25" class="mr-30"/>
+                    <img src="assets/images/logo2.png" height="25" class="mr-30"/>
+                    <img src="assets/images/logo3.png" height="25" class="mr-30"/>
+                    <img src="assets/images/logo4.png" height="25"/>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <ul class="navbar-nav ml-auto" routerLinkActive="active">
+            <li class="nav-item pr-20 pt-7 pb-18 border-white-right">
+                <a class="nav-link text-uppercase p-0 body-copy" routerLink="/home">Rebates</a>
+            </li>
+            <li class="nav-item pr-20 pl-20 pt-7 pb-18 border-white-right border-gray-left">
+                <a class="nav-link text-uppercase p-0 body-copy" routerLink="/status-lookup">Status Lookup</a>
+            </li>
+            <li class="nav-item pr-20 pl-20 pt-7 pb-18 border-white-right border-gray-left"><a
+                    class="nav-link text-uppercase p-0 body-copy" routerLink="/faq">FAQ</a>
+            </li>
+            <li class="nav-item pl-20 pt-7 pb-18 border-gray-left">
+                <a class="nav-link text-uppercase p-0 body-copy" routerLink="/contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+<!--Visible only on XS-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-lg-none p-0">
+
+    <div style="max-width: 70%" class="mr-auto">
+        <a *ngIf="isCollapsed"
+           [ngClass]="{'collapsed': isCollapsed}">
+            <div dropdown class="btn-group">
+                <div>
+
+            <img src="assets/images/logo1.png" routerLink="/home" class="img-fluid">
+                </div>
+                <div dropdownToggle  class="dropdown-toggle caret"></div>
+
+                <!--<span class="my-auto"></span>-->
+                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                    <div class="brandImages">
+                        <img src="assets/images/logo2.png" class="dropdown-item plpr-0 pb-10"/>
+                        <img src="assets/images/logo3.png"  class="dropdown-item plpr-0 pb-10"/>
+                        <img src="assets/images/logo4.png"  class="dropdown-item plpr-0 pb-0" />
+                    </div>
+                </ul>
+            </div>
+        </a>
+
+
+        <a *ngIf="!isCollapsed">
+            <p class="subheadline">MENU</p>
+
+        </a>
+
+        <!--<h2 class="m-0">MENU</h2>-->
+    </div>
+
+
+    <div class="ml-auto" style="max-width: 20%">
+        <button *ngIf="isCollapsed" class="navbar-toggler center-text" type="button"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                (click)="toggleCollapse()" [ngClass]="{'collapsed': isCollapsed}">
+            <div class="grid navbar-toggler-btn">
+                <div class="row mx-auto">
+                    <fa class="mx-auto nav-toggler-icon" name="bars"></fa>
+                </div>
+
+                <div class="row mx-auto">
+                    <span>MENU</span>
+                </div>
+            </div>
+
+        </button>
+
+        <button *ngIf="!isCollapsed" class="center-text p-0" type="button"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                (click)="toggleCollapse()"><span class="subheadline">X</span></button>
+
+        <!--<button style="max-height: 38px;" class="center-text subheadline py-auto" type="button" data-toggle="collapse"-->
+        <!--data-target="#navbarSupportedContent"-->
+        <!--aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"-->
+        <!--(click)="toggleCollapse()" [ngClass]="{'collapsed': isCollapsed}">X</button>-->
+
+
+    </div>
+
+    <div class="collapse navbar-collapse p-10" id="navbarSupportedContent" [ngClass]="{'show': !isCollapsed}">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link btn btn-primary text-uppercase gm-top-nav-btn" onclick="window.scrollTo(0, 0);" routerLink="home"
+                                    (click)="toggleCollapse()">Rebates</a>
+            </li>
+            <li class="nav-item"><a class="nav-link btn btn-primary text-uppercase gm-top-nav-btn"
+                                    routerLink="status-lookup" (click)="toggleCollapse()" onclick="window.scrollTo(0, 0);">Status Lookup</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-primary text-uppercase gm-top-nav-btn"
+                                    routerLink="faq" (click)="toggleCollapse()" onclick="window.scrollTo(0, 0);">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-primary text-uppercase gm-top-nav-btn" routerLink="contact"
+                                    (click)="toggleCollapse()" onclick="window.scrollTo(0, 0);">Contact</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+<router-outlet class="h-100"></router-outlet>
+
+<!--Hidden only on xs-->
+<nav class="navbar navbar-fixed-bottom navbar-light bg-light d-none d-sm-block footer">
+
+    <div class="container pt-30 pb-20 pl-0 border-bottom">
+
+        <ul class="nav" routerLinkActive="active">
+            <li class="nav-item"><a class="nav-link text-uppercase py-0 pl-0 body-copy" onclick="window.scrollTo(0, 0);" routerLink="home">Rebates</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-uppercase py-0 body-copy" onclick="window.scrollTo(0, 0);" routerLink="status-lookup">Status
+                Lookup</a></li>
+            <li class="nav-item"><a class="nav-link text-uppercase py-0 body-copy" onclick="window.scrollTo(0, 0);" routerLink="faq">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link text-uppercase py-0 body-copy" onclick="window.scrollTo(0, 0);" routerLink="contact">Contact</a></li>
+        </ul>
+
+    </div>
+
+    <div class="container pt-20 pl-0 pb-40">
+
+        <p class="legal-copy">©2018 General Motors Company. All rights reserved.</p>
+
+    </div>
+
+</nav>
+
+
+<!--Visible only on XS-->
+<nav class="navbar bottom navbar-expand-lg navbar-light bg-light d-block d-sm-none px-10 pt-10 footer">
+
+    <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link btn btn-primary text-uppercase gm-bottom-nav-btn" onclick="window.scrollTo(0, 0);" routerLink="home">Rebates</a>
+        </li>
+        <li class="nav-item"><a class="nav-link btn btn-primary text-uppercase gm-bottom-nav-btn"
+                                routerLink="status-lookup" onclick="window.scrollTo(0, 0);">Status Lookup</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-primary text-uppercase gm-bottom-nav-btn"
+                                routerLink="faq" onclick="window.scrollTo(0, 0);">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-primary text-uppercase gm-bottom-nav-btn" routerLink="contact" onclick="window.scrollTo(0, 0);">Contact</a>
+        </li>
+    </ul>
+
+    <div class="text-center">
+        <p class="legal-copy pt-20 pb-40">©2018 General Motors Company.<br> All rights reserved.</p>
+    </div>
+
+</nav>

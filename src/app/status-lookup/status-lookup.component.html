@@ -1,0 +1,679 @@
+<div class="container d-none d-sm-block">
+    <!--d-none d-sm-block-->
+    <div *ngIf="status === 'home'">
+        <div class="row">
+            <h1 class="text-uppercase spacing-square-big-top spacing-square-20">status lookup </h1>
+        </div>
+        <div class="row">
+            <p class="spacing-square-big">Please chose one of the search option below to view the status or your rebate
+                or
+                check your prepaid card balance.</p>
+        </div>
+        <div class="row">
+
+            <div class="col first-status-div ">
+                <form #emailDisable="ngForm">
+                    <h2 class="text-uppercase">By email</h2>
+
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email"
+                           [(ngModel)]="model.email" maxlength="50" minlength="5" #email="ngModel" required>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                         class="alert alert-danger">
+
+                        <div *ngIf="email.errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors.maxlength">
+                            Email must be a maximum of 50 characters long.
+                        </div>
+                        <div *ngIf="email.errors.minlength">
+                            Email must be a minimum of 5 characters long.
+                        </div>
+                        <div *ngIf="email.errors.pattern">
+                            Email must be in the standard email format.
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <button type="button" class="btn btn-primary text-uppercase spacing-square-20-top gm-btn"
+                                [disabled]="!emailDisable.valid"
+                                (click)="submitButtonOnStatusLookup('email')">Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+                <form #phoneDisable="ngForm">
+                    <h2 class="text-uppercase"><span class="text-primary">OR</span> by phone</h2>
+
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone"
+                           [(ngModel)]="model.phone" #phone="ngModel" pattern="[0-9]{10}" required>
+                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                         class="alert alert-danger">
+                        <div *ngIf="phone.errors.required">
+                            Phone is required.
+                        </div>
+                        <div *ngIf="phone.errors.pattern">
+                            Phone must be of 10 numbers without any special characters.
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <button type="button" class="btn btn-primary text-uppercase spacing-square-20-top gm-btn"
+                                [disabled]="!phoneDisable.valid"
+                                (click)="submitButtonOnStatusLookup('phone')">Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+                <form #addressDisable="ngForm">
+                    <h2 class="text-uppercase"><span class="text-primary">OR</span> by address</h2>
+
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control spacing-square-16" id="lastName" placeholder="Last Name"
+                           name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" maxlength="25"
+                           required>
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                         class="alert alert-danger">
+
+                        <div *ngIf="lastName.errors.required">
+                            Last Name is required.
+                        </div>
+                        <div *ngIf="lastName.errors.maxlength">
+                            Last Name must be a maximum of 25 characters long.
+                        </div>
+                    </div>
+
+                    <label for="address1">Street Address</label>
+                    <input type="text" class="form-control spacing-square-16" id="address1" name="address1"
+                           [(ngModel)]="model.address1" #address1="ngModel" maxlength="26"
+                           placeholder="Street Address" required>
+                    <div *ngIf="address1.invalid && (address1.dirty || address1.touched)"
+                         class="alert alert-danger">
+
+                        <div *ngIf="address1.errors.required">
+                            Street Address 1 is required.
+                        </div>
+                        <div *ngIf="address1.errors.maxlength">
+                            Street Address 1 must be a maximum of 26 characters long.
+                        </div>
+                    </div>
+
+                    <label for="zip">Zip Code</label>
+                    <input type="text" class="form-control" id="zip" placeholder="Zip Code" name="zip"
+                           [(ngModel)]="model.zip" #zip="ngModel" pattern="^\d{5}(?:[-\s]\d{4})?$" maxlength="10"
+                           minlength="5" required>
+                    <div *ngIf="zip.invalid && (zip.dirty || zip.touched)"
+                         class="alert alert-danger">
+                        <div *ngIf="zip.errors.required">
+                            Zip is required.
+                        </div>
+                        <div *ngIf="custevent_zip.errors.maxlength">
+                            Zip must be a maximum of 10 characters long.
+                        </div>
+                        <div *ngIf="custevent_zip.errors.minlength">
+                            Zip must be a minimum of 5 characters long.
+                        </div>
+                        <div *ngIf="zip.errors.pattern">
+                            Zip must be either XXXXX or XXXXX-XXXX and all numeric
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <button type="button"
+                                class="btn btn-primary text-uppercase gm-btn spacing-square-big spacing-square-20-top"
+                                [disabled]="!addressDisable.valid"
+                                (click)="submitButtonOnStatusLookup('address')">Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="status === 'spinner'">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-uppercase spacing-square-big-top spacing-square-20">Loading, Please Wait</h1>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <img src="/assets/images/spinner.gif"
+                         class="img-rounded img-responsive spinnerCentered"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="status === 'results'">
+
+        <div *ngIf="data.length === 0 ">
+            <h1 class="spacing-square-big-top">OOPS!</h1>
+            <p class="spacing-square-big ">We were unable to find a submission with the information you provided. Please
+                make sure you are using the
+                exact information you used on your rebate form. If you mailed in your rebate, it can take up to 10
+                business days to process your rebate submission. If you are still unable to find your rebate status, <a
+                        routerLink="/contact">please contact support.</a></p>
+        </div>
+
+
+        <div *ngIf="data.length !== 0 ">
+            <h1 class="spacing-square-big-top">Your Rebates:</h1>
+            <div class="row">
+                <div class="col">
+                    <div *ngFor="let entry of data; let i = index" class="">
+
+
+                        <div *ngIf="i%2 === 0 " class="spacing-square-big bordertest3">
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'approved' || entry.validationStatus.toLowerCase() === 'approved expedited'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>Approved</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Submission ID:</strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+                                    <!--dateShipped (if there) or processDate-->
+                                    <tr *ngIf="entry.giftCardShipDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.giftCardShipDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.checkMailDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.checkMailDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.premiumItemProcessedDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.premiumItemProcessedDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="!entry.giftCardShipDate && !entry.checkMailDate && !entry.premiumItemProcessedDate">
+                                        <td><strong>Approval Date: </strong></td>
+                                        <td>{{ entry.decisionDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.giftCardFulfillmentAmount">
+                                        <td><strong>Rebate Amount : </strong></td>
+                                        <td>{{ entry.giftCardFulfillmentAmount }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.checkFulfillmentAmt">
+                                        <td><strong>Rebate Amount : </strong></td>
+                                        <td>{{ entry.checkFulfillmentAmt }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'invalid'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>Invalid</td>
+                                    </tr>
+
+                                    <!--Submission ID-->
+                                    <tr>
+                                        <td><strong>Submission ID: </strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+
+                                    <!--dateSubmitted, if status is 'invalid'-->
+                                    <tr>
+                                        <td><strong>Date Processed: </strong></td>
+                                        <td>{{ entry.decisionDate }}</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'preregistered pending submission' || entry.validationStatus.toLowerCase() === 'review'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>{{ entry.reviewDisposition === '24' ? 'Awaiting Customer Image Upload' : 'In Process'}}</td>
+                                    </tr>
+
+
+                                    <!--Submission ID-->
+                                    <tr>
+                                        <td><strong>Submission ID: </strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+
+                                    <!--dateSubmitted, if status is 'pending', or 'review'-->
+                                    <tr>
+                                        <td><strong>Submission Date: </strong></td>
+                                        <td>{{ entry.dateCreated }}</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div *ngFor="let entry of data; let i = index" class="">
+                        <div *ngIf="i%2 !== 0 " class="spacing-square-big bordertest3">
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'approved' || entry.validationStatus.toLowerCase() === 'approved expedited'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>Approved</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Submission ID:</strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+                                    <!--dateShipped (if there) or processDate-->
+                                    <tr *ngIf="entry.giftCardShipDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.giftCardShipDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.checkMailDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.checkMailDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.premiumItemProcessedDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.premiumItemProcessedDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="!entry.giftCardShipDate && !entry.checkMailDate && !entry.premiumItemProcessedDate">
+                                        <td><strong>Approval Date: </strong></td>
+                                        <td>{{ entry.decisionDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.giftCardFulfillmentAmount">
+                                        <td><strong>Rebate Amount : </strong></td>
+                                        <td>{{ entry.giftCardFulfillmentAmount }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.checkFulfillmentAmt">
+                                        <td><strong>Rebate Amount : </strong></td>
+                                        <td>{{ entry.checkFulfillmentAmt }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'invalid'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>Invalid</td>
+                                    </tr>
+
+                                    <!--Submission ID-->
+                                    <tr>
+                                        <td><strong>Submission ID: </strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+
+                                    <!--dateSubmitted, if status is 'invalid'-->
+                                    <tr>
+                                        <td><strong>Date Processed: </strong></td>
+                                        <td>{{ entry.decisionDate }}</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'preregistered pending submission' || entry.validationStatus.toLowerCase() === 'review'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>{{ entry.reviewDisposition === '24' ? 'Awaiting Customer Image Upload' : 'In Process'}}</td>
+                                    </tr>
+
+
+                                    <!--Submission ID-->
+                                    <tr>
+                                        <td><strong>Submission ID: </strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+
+                                    <!--dateSubmitted, if status is 'pending', or 'review'-->
+                                    <tr>
+                                        <td><strong>Submission Date: </strong></td>
+                                        <td>{{ entry.dateCreated }}</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <button type="button"
+            class="btn btn-primary text-uppercase spacing-square-big  gm-btn"
+            (click)="refreshStatusLookup()"> Back
+    </button>
+
+</div>
+
+    <div *ngIf="status === 'error'">
+        <div class="container">
+            <h1 class="spacing-square-big-top">OOPS!</h1>
+            <p>We were unable to find a submission with the information you provided. Please make sure you are using the
+                exact information you used on your rebate form. If you mailed in your rebate, it can take up to 10
+                business days to process your rebate submission. If you are still unable to find your rebate status, <a
+                        routerLink="/contact">please contact support.</a></p>
+            <button type="button"
+                    class="btn btn-primary text-uppercase spacing-square-big spacing-square-big-top gm-btn"
+                    (click)="refreshStatusLookup()"> Back
+            </button>
+
+        <!--<button type="button"-->
+        <!--class="btn btn-primary text-uppercase spacing-square-big spacing-square-big-top gm-btn"-->
+        <!--(click)="test()"> Test Data-->
+        <!--</button>-->
+    </div>
+</div>
+
+</div>
+
+
+<div class="container d-block d-sm-none">
+    <!--d-none d-sm-block-->
+    <div *ngIf="status === 'home'">
+        <div class="row">
+            <!--<div class="col-xs">-->
+            <h1 class="text-uppercase spacing-square-big-top spacing-square-20">status lookup </h1>
+        </div>
+        <div class="row spacing-square-big">
+            <P>Please chose one of the search option below to view the status or your rebate or check your prepaid card
+                balance.</P>
+        </div>
+        <div class="">
+
+            <div class="col px-0">
+                <form #emailDisable="ngForm">
+                    <h2 class="text-uppercase px-0 spacing-square-20">By email</h2>
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control spacing-square-20" placeholder="Email" id="email"
+                           name="email" maxlength="50" minlength="5"
+                           [(ngModel)]="model.email" #email="ngModel" required>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                         class="alert alert-danger">
+                        <div *ngIf="email.errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors.maxlength">
+                            Email must be a maximum of 50 characters long.
+                        </div>
+                        <div *ngIf="email.errors.minlength">
+                            Email must be a minimum of 5 characters long.
+                        </div>
+                        <div *ngIf="email.errors.pattern">
+                            Email must be in the standard email format.
+                        </div>
+                    </div>
+
+                    <div class="mx-0 pl-0">
+                        <button type="button" class="btn btn-primary text-uppercase gm-btn mx-0 px-0 spacing-square-big"
+                                [disabled]="!emailDisable.valid"
+                                (click)="submitButtonOnStatusLookup('email')">Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col px-0">
+                <form #phoneDisable="ngForm">
+                    <h2 class="text-uppercase px-0 spacing-square-20"><span class="text-primary">OR</span> by phone</h2>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control spacing-square-20" id="phone" placeholder="Phone"
+                           name="phone" pattern="[0-9]{10}"
+                           [(ngModel)]="model.phone" #phone="ngModel" required>
+                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                         class="alert alert-danger">
+                        <div *ngIf="phone.errors.required">
+                            Phone is required.
+                        </div>
+                        <div *ngIf="phone.errors.maxlength">
+                            Phone must be a maximum of 16 characters long.
+                        </div>
+                        <div *ngIf="phone.errors.pattern">
+                            Phone must be of 10 numbers without any special characters.
+                        </div>
+                    </div>
+
+
+                    <div class="mx-0 pl-0">
+                        <button type="button" class="btn btn-primary text-uppercase gm-btn mx-0 px-0 spacing-square-big"
+                                [disabled]="!phoneDisable.valid"
+                                (click)="submitButtonOnStatusLookup('phone')">Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col px-0">
+                <form #addressDisable="ngForm">
+                    <h2 class="text-uppercase px-0 spacing-square-20"><span class="text-primary">OR</span> by address
+                    </h2>
+
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control spacing-square-20" id="lastName" placeholder="Last Name"
+                           name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" maxlength="25"
+                           required>
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                         class="alert alert-danger">
+
+                        <div *ngIf="lastName.errors.required">
+                            Last Name is required.
+                        </div>
+                        <div *ngIf="lastName.errors.maxlength">
+                            Last Name must be a maximum of 25 characters long.
+                        </div>
+                    </div>
+                    <label for="address1">Street Address</label>
+                    <input type="text" class="form-control spacing-square-20" id="address1" name="address1"
+                           [(ngModel)]="model.address1" #address1="ngModel" maxlength="26"
+                           placeholder="Street Address" required>
+                    <div *ngIf="address1.invalid && (address1.dirty || address1.touched)"
+                         class="alert alert-danger">
+
+                        <div *ngIf="address1.errors.required">
+                            Street Address 1 is required.
+                        </div>
+                        <div *ngIf="address1.errors.maxlength">
+                            Street Address 1 must be a maximum of 26 characters long.
+                        </div>
+                    </div>
+                    <label for="zip">Zip Code</label>
+                    <input type="text" class="form-control spacing-square-20" id="zip" placeholder="Zip Code" name="zip"
+                           [(ngModel)]="model.zip" #zip="ngModel" maxlength="10" minlength="5"
+                           pattern="^\d{5}(?:[-\s]\d{4})?$" required>
+                    <div *ngIf="zip.invalid && (zip.dirty || zip.touched)"
+                         class="alert alert-danger">
+                        <div *ngIf="zip.errors.required">
+                            Zip is required.
+                        </div>
+                        <div *ngIf="zip.errors.maxlength">
+                            Zip must be a maximum of 10 characters long.
+                        </div>
+                        <div *ngIf="zip.errors.maxlength">
+                            Zip must be a maximum of 10 characters long.
+                        </div>
+                        <div *ngIf="zip.errors.minlength">
+                            Zip must be a minimum of 5 characters long.
+                        </div>
+                        <div *ngIf="zip.errors.pattern">
+                            Zip must be either XXXXX or XXXXX-XXXX and all numeric
+                        </div>
+                    </div>
+
+                    <div class="mx-0 pl-0">
+                        <button type="button" class="btn btn-primary text-uppercase gm-btn mx-0 px-0 spacing-square-big"
+                                [disabled]="!addressDisable.valid"
+                                (click)="submitButtonOnStatusLookup('address')">
+                            <!--(click)="submitButtonOnStatusLookup('address')"-->
+                            <!--routerLink="status-lookup/results.html"-->
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="status === 'spinner'">
+        <div class="container">
+            <div class="modal-header ">
+                <h2 class="modal-title card-mb3 spinnerCentered">Loading.<br> Please Wait.</h2>
+            </div>
+
+            <div class="modal-body">
+                <div class="card-body">
+                    <img src="/assets/images/spinner.gif"
+                         class="img-rounded img-responsive spinnerCentered"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="status === 'results'">
+
+        <div *ngIf="data.length === 0 ">
+            <h1 class="spacing-square-big">OOPS!</h1>
+            <p class="spacing-square-big ">We were unable to find a submission with the information you provided. Please
+                make sure you are using the
+                exact information you used on your rebate form. If you mailed in your rebate, it can take up to 10
+                business days to process your rebate submission. If you are still unable to find your rebate status, <a
+                        routerLink="/contact">please contact support.</a></p>
+        </div>
+
+
+        <div *ngIf="data.length !== 0 ">
+
+            <h1 class="spacing-square-big">Your Rebates:</h1>
+            <div class="row">
+                <div class="col">
+                    <div *ngFor="let entry of data; let i = index" class="">
+                        <div class="spacing-square-big bordertest3">
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'approved' || entry.validationStatus.toLowerCase() === 'approved expedited'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>Approved</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Submission ID:</strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+                                    <!--dateShipped (if there) or processDate-->
+                                    <tr *ngIf="entry.giftCardShipDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.giftCardShipDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.checkMailDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.checkMailDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.premiumItemProcessedDate">
+                                        <td><strong>Reward Shipped: </strong></td>
+                                        <td>{{ entry.premiumItemProcessedDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="!entry.giftCardShipDate && !entry.checkMailDate && !entry.premiumItemProcessedDate">
+                                        <td><strong>Approval Date: </strong></td>
+                                        <td>{{ entry.decisionDate }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.giftCardFulfillmentAmount">
+                                        <td><strong>Rebate Amount : </strong></td>
+                                        <td>{{ entry.giftCardFulfillmentAmount }}</td>
+                                    </tr>
+                                    <tr *ngIf="entry.checkFulfillmentAmt">
+                                        <td><strong>Rebate Amount : </strong></td>
+                                        <td>{{ entry.checkFulfillmentAmt }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'invalid'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>Invalid</td>
+                                    </tr>
+
+                                    <!--Submission ID-->
+                                    <tr>
+                                        <td><strong>Submission ID: </strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+
+                                    <!--dateSubmitted, if status is 'invalid'-->
+                                    <tr>
+                                        <td><strong>Date Processed: </strong></td>
+                                        <td>{{ entry.decisionDate }}</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+
+                            <div *ngIf="entry.validationStatus.toLowerCase() === 'preregistered pending submission' || entry.validationStatus.toLowerCase() === 'review'">
+                                <table cellpadding="10px">
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td>{{ entry.reviewDisposition === '24' ? 'Awaiting Customer Image Upload' : 'In Process'}}</td>
+                                    </tr>
+
+
+                                    <!--Submission ID-->
+                                    <tr>
+                                        <td><strong>Submission ID: </strong></td>
+                                        <td>{{entry.id}}</td>
+                                    </tr>
+
+                                    <!--dateSubmitted, if status is 'pending', or 'review'-->
+                                    <tr>
+                                        <td><strong>Submission Date: </strong></td>
+                                        <td>{{ entry.dateCreated }}</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <button type="button"
+                    class="btn btn-primary text-uppercase spacing-square-big spacing-square-big-top gm-btn"
+                    (click)="refreshStatusLookup()"> Back
+            </button>
+        </div>
+    </div>
+
+<div *ngIf="status === 'error'">
+    <div class="container ">
+        <h1>OOPS!</h1>
+        <p>We were unable to find a submission with the information you provided. Please make sure you are using the
+            exact information you used on your rebate form. If you mailed in your rebate, it can take up to 10
+            business days to process your rebate submission. If you are still unable to find your rebate status, <a
+                    routerLink="/contact">please contact support.</a></p>
+        <button type="button"
+                class="btn btn-primary text-uppercase spacing-square-big spacing-square-big-top gm-btn"
+                (click)="refreshStatusLookup()"> Back
+        </button>
+
+        </div>
+    </div>
+
+</div>
+<!--</div>-->
